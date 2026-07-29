@@ -67,11 +67,13 @@ export default function TestsPage() {
   const cargarPreguntas = async (testId) => {
     try {
       setLoading(true);
+      setError('');
       const data = await testsAPI.obtenerPreguntas(testId, candidatoId);
       setPreguntas(data.preguntas || []);
       setRespuestas({});
       setProgreso(0);
     } catch (err) {
+        setPreguntas([]);
       setError('Error al cargar preguntas');
       console.error(err);
     } finally {
@@ -166,9 +168,13 @@ export default function TestsPage() {
         </div>
 
         {error && (
-          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6">
-            {error}
-          </div>
+<div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6 flex items-center justify-between gap-4">
+  <span>{error}</span>
+  <button
+    onClick={() => cargarPreguntas(testActualObj.id)}
+    className="bg-red-600 text-white text-sm font-semibold px-3 py-1 rounded hover:bg-red-700 flex-shrink-0">
+  Reintentar</button>
+<</div>
         )}
 
         {/* Preguntas */}
