@@ -81,12 +81,17 @@ export default function ResultadosPage() {
       <div className="min-h-screen bg-gradient-to-br from-blue-900 to-blue-800 flex items-center justify-center">
         <div className="bg-white rounded-lg shadow-lg p-8 text-center max-w-md">
           <p className="text-red-600 mb-4">{error || 'No hay datos disponibles'}</p>
-          <button
+          <div className="flex gap-3 justify-center">
+            <button
+              onClick={() => { setError(''); setLoading(true); cargarResultados(); }}>
+            className="bg-gray-200 text-gray-800 px-6 py-2 rounded hover:bg-gray-300">
+                Reintentar</button><button
             onClick={() => navigate('/')}
             className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700"
           >
             Volver
           </button>
+          </div>
         </div>
       </div>
     );
