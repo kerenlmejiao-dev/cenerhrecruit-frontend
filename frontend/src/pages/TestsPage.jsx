@@ -173,8 +173,7 @@ export default function TestsPage() {
   <button
     onClick={() => cargarPreguntas(testActualObj.id)}
     className="bg-red-600 text-white text-sm font-semibold px-3 py-1 rounded hover:bg-red-700 flex-shrink-0">
-  Reintentar</button>
-<</div>
+  Reintentar</button></div>
         )}
 
         {/* Preguntas */}
